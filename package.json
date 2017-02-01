@@ -12,6 +12,7 @@
   "author": "Rubens Mariuzzo <rubens@mariuzzo.com> (http://github.com/rmariuzzo)",
   "license": "MIT",
   "dependencies": {
+    "wolfy87-eventemitter": "^5.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",

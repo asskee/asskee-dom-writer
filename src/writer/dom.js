@@ -1,18 +1,21 @@
+import EventEmitter from 'wolfy87-eventemitter';
+
 /**
  * The DOMWriter class object.
  * @author Rubens Mariuzzo <rubens@mariuzzo.com>
  */
-class DOMWriter {
+class DOMWriter extends EventEmitter {
   /**
    * Construct a new DOMWriter object.
    * @type {Object}
    */
   constructor(options = {}) {
+    super();
     this.width = options.width || 32;
     this.height = options.height || 8;
     this.border = options.border || false;
     this.separator = options.separator || '\n';
-    this.out = options.out;
+    this.element = options.element;
     window.addEventListener('keydown', this.keydownHandler.bind(this));
   }
 
@@ -20,7 +23,7 @@ class DOMWriter {
    * Clear the output.
    */
   clear() {
-    this.out.innerHTML = '';
+    this.element.innerHTML = '';
   }
 
   /**
@@ -40,8 +43,14 @@ class DOMWriter {
     if (typeof contents !== 'string') return;
     let lines = contents.split(this.separator);
     lines = lines.splice(0, this.height);
-    lines = lines.map(line => line.substr(0, this.width));
-    this.out.write(lines.join(this.separator));
+    lines = lines.map((line, row) => {
+      const trimmed = line.substr(0, this.width);
+      return trimmed.replace(
+        /./g,
+        (match, col) => `<span id="cell-${row}-${col}">${match}</span>`,
+      );
+    });
+    this.element.innerHTML = lines.join(this.separator);
   }
 }
 

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style type="text/css">
+    div {
+      background-color: #eee;
+      width: 32ch;
+      height: 8em;
+      line-height: 1;
+      font-family: monospace;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <script src="asskee-dom-writer.js"></script>
+  <script src="/webpack-dev-server.js"></script>
+  <script>
+    var writer = new DOMWriter({
+      element: document.querySelector('div'),
+    });
+    writer.write(`
+1234567890123456789012345678901234567890
+2345678901234567890123456789012345678901
+3456789012345678901234567890123456789012
+4567890123456789012345678901234567890123
+5678901234567890123456789012345678901234
+6789012345678901234567890123456789012345
+7890123456789012345678901234567890123456
+8901234567890123456789012345678901234567
+9012345678901234567890123456789012345678
+0123456789012345678901234567890123456789
+`.trim());
+  </script>
+</body>
+</html>
