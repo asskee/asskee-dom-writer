@@ -1,0 +1,40 @@
+{
+  "name": "asskee-dom-writer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/asskee-dom-writer.min.js",
+  "scripts": {
+    "dev": "webpack-dev-server --content-base development/",
+    "build:dev": "webpack -d --devtool inline-source-map asskee-dom-writer=./src/index.js",
+    "build:dist": "webpack -p asskee-dom-writer.min=./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rubens Mariuzzo <rubens@mariuzzo.com> (http://github.com/rmariuzzo)",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-syntax-flow": "^6.18.0",
+    "babel-plugin-tcomb": "^0.3.24",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.22.0",
+    "babel-preset-es2015": "^6.22.0",
+    "cross-env": "^3.1.4",
+    "eslint": "^3.14.1",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-import-resolver-webpack": "^0.8.1",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-import": "^2.2.0",
+    "pre-commit": "^1.2.2",
+    "tcomb": "^3.2.16",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "pre-commit": [
+    "build:dev",
+    "build:dist"
+  ]
+}
